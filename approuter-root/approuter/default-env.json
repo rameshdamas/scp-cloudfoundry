@@ -1,0 +1,5 @@
+{
+  "destinations": [ { 
+      "name": "app-destination", "url": "http://localhost:8080/businessapp", "forwardAuthToken": true 
+  }]
+}

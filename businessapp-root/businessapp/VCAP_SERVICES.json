@@ -1,0 +1,15 @@
+{
+  "xsuaa":[
+  {
+    "credentials": {
+	  "xsappname":"<my-xsappname>",
+      "clientid":"<my-clientid>",
+      "clientsecret":"<my-clientsecret>",
+	  "identityzoneid":"<my-identityzoneid>",
+      "identityzone":"<my-identityzone>",
+      "url":"<my-authentication-url>",
+      "verificationkey":"-----BEGIN PUBLIC KEY-----MIICI....AAQ==-----END PUBLIC KEY-----"
+    },
+    "tags":["xsuaa"]
+  }]
+}

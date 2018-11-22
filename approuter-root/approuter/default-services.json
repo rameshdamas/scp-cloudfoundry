@@ -1,0 +1,8 @@
+{
+  "uaa": {
+    "url" : "<my-authentication-url>",
+    "clientid" : "<my-clientid>",
+    "clientsecret" : "<my-clientsecret>",
+    "xsappname" : "<my-xsappname>"
+  }
+}

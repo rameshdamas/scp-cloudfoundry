@@ -1,0 +1,12 @@
+---
+applications:
+- name: approuter
+  host: approuter-<Subdomain>
+  path: approuter
+  memory: 128M
+  buildpack: nodejs_buildpack
+  env:
+    TENANT_HOST_PATTERN: 'approuter-(.*).cfapps.us10.hana.ondemand.com'
+    destinations: '[{"name":"app-destination", "url" :"<my-businessapp-url>", "forwardAuthToken": true}]'
+  services:
+    - my-xsuaa

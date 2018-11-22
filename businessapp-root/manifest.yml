@@ -1,0 +1,16 @@
+---
+applications:
+
+- name: businessapp
+  memory: 1024M
+  random-route: true
+  path: businessapp/target/businessapp.war
+  buildpacks:
+    - sap_java_buildpack
+  env:
+    TARGET_RUNTIME: tomee
+    JBP_CONFIG_SAPJVM_MEMORY_SIZES: 'metaspace:96m..'
+    SAP_JWT_TRUST_ACL: '[{"clientid" : "*", "identityzone" : "*"}]'
+  services:
+  - my-xsuaa
+  - app-destination
