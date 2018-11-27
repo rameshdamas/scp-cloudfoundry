@@ -1,7 +1,6 @@
 package com.dama.scpcf.web;
 
 import java.io.IOException;
-import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +14,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.sap.cloud.sdk.cloudplatform.connectivity.Destination;
 import com.sap.cloud.sdk.cloudplatform.logging.CloudLoggerFactory;
+import com.sap.cloud.sdk.cloudplatform.security.user.User;
 
 @Singleton
 public class HelloWorldServlet extends HttpServlet {
@@ -37,22 +37,22 @@ public class HelloWorldServlet extends HttpServlet {
 	protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
 		logger.info("I am running!");
 		String remoteUser = null;
-		String currentUser = null;
-		Map<String, Destination> map = null;
+		User currentUser = null;
+		Destination destination = null;
 		try {
 			remoteUser = request.getRemoteUser();
-			currentUser = userService.getCurrentUserName();
-			map = destinationService.getAllDestinations();
+			currentUser = userService.getCurrentUser();
+			destination = destinationService.getDestination("scpDocument");
 		} catch (Exception e) {
-			logger.error("Error! while fetching loggedin user & destinations");
+			logger.error("Error! while fetching loggedin user");
 			e.printStackTrace();
 		}
 		response.setContentType("text/html");
 		response.getWriter()
-				.print("<p>Hello! This is my test application with authentication</p>"
+				.print("<p>Hello! This is my test application with XSUAA authentication</p>"
 						+ "<p>Remote user from HttpServletRequest: " + remoteUser + "</p>"
 						+ "<p>Current user from UserAccessor:" + currentUser + "</p>"
-						+ "<p> Destinations from DestinationAccessor: " + map + "</p>");
+						+ "<p>Destination from DestinationAccessor:" + destination + "</p>");
 	}
 
 }

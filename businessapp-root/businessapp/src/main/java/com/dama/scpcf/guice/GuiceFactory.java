@@ -10,10 +10,10 @@ public class GuiceFactory {
 	private static final Injector injector = Guice.createInjector(new GuiceModule(), new ServletModule() {
 		@Override
 		protected void configureServlets() {
-			this.serve("/hello1").with(HelloWorldServlet.class);
+			this.serve("/hello").with(HelloWorldServlet.class);
 		}
 	});
-	
+
 	public static Injector getInjector() {
 		return injector;
 	}

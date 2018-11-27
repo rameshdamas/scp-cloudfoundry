@@ -12,6 +12,11 @@ public class UserService implements IUserService {
 	}
 
 	@Override
+	public User getCurrentUser() {
+		return UserAccessor.getCurrentUser();
+	}
+
+	@Override
 	public String getCurrentUserName() {
 		User user = UserAccessor.getCurrentUser();
 		return user.getName();
